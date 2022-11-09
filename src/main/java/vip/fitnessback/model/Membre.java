@@ -32,7 +32,8 @@ public class Membre {
     @Column(name="nbre")
     private int nbre;
 
-    @Column(name="qrcode", columnDefinition="TEXT")
+    @Column(name="qrcode")
+    @Lob
     private String qrcode;
 
     public void increase(){
