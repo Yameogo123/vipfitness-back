@@ -22,6 +22,6 @@ public class FitnessbackApplication implements CommandLineRunner {
 		User user= new User();
 		user.setPassword("$2a$10$6aGSyRfjkzYI4yR6MqZxbedPycQry0RMEkqGVqj0ClP8/.iBoe5k6");
 		user.setUsername("admin@gmail.com");
-		userRepository.save(user);
+		//userRepository.save(user);
 	}
 }
