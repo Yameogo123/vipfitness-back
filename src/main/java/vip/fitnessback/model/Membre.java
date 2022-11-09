@@ -32,7 +32,7 @@ public class Membre {
     @Column(name="nbre")
     private int nbre;
 
-    @Column(name="qrcode")
+    //@Column(name="qrcode")
     @Lob
     private String qrcode;
 
