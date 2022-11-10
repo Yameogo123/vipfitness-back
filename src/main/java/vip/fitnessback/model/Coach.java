@@ -25,7 +25,7 @@ public class Coach {
     @Column(name="role")
     private String role;
 
-    @Column(name="file", length = 1000)
+    @Lob
     private String file;
 
     @Column(name="facebook")
