@@ -35,6 +35,7 @@ public class MembreController {
     public Membre renouveler(@PathVariable Long id){
         Membre member= membreService.oneById(id);
         member.setFinInscription(LocalDate.now().plusMonths(1));
+        member.setConfirmation(true);
         member.increase();
         return membreService.updateMembre(member);
     }
