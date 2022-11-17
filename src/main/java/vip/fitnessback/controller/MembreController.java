@@ -2,7 +2,9 @@ package vip.fitnessback.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import vip.fitnessback.model.Budget;
 import vip.fitnessback.model.Membre;
+import vip.fitnessback.service.BudgetService;
 import vip.fitnessback.service.MembreService;
 
 import java.time.LocalDate;
@@ -15,6 +17,9 @@ public class MembreController {
 
     @Autowired
     private MembreService membreService;
+
+    @Autowired
+    private BudgetService budgetService;
 
     @GetMapping("/all")
     public List<Membre> all(){
@@ -37,6 +42,15 @@ public class MembreController {
         member.setFinInscription(LocalDate.now().plusMonths(1));
         member.setConfirmation(true);
         member.increase();
+        Budget budget= new Budget();
+        budget.setDate(LocalDate.now());
+        budget.setNom(member.getNom());
+        if(member.getType()=="1"){
+            budget.setMontant(20000);
+        }else{
+            budget.setMontant(15000);
+        }
+        budgetService.add(budget);
         return membreService.updateMembre(member);
     }
 

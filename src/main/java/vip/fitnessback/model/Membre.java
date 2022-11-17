@@ -36,6 +36,9 @@ public class Membre {
     @Lob
     private String qrcode;
 
+    @Column(name="type")
+    private String type;
+
     public void increase(){
         this.nbre+=1;
     }
