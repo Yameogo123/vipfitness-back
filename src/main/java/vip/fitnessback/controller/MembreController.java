@@ -31,7 +31,7 @@ public class MembreController {
         Budget budget= new Budget();
         budget.setDate(LocalDate.now());
         budget.setNom(membre.getNom());
-        if(membre.getType()=="1"){
+        if(membre.getType().compareToIgnoreCase("1")==0){
             budget.setMontant(20000);
         }else{
             budget.setMontant(15000);
