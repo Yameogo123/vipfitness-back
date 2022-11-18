@@ -28,6 +28,15 @@ public class MembreController {
 
     @PutMapping("/update")
     public Membre Update(@RequestBody Membre membre){
+        Budget budget= new Budget();
+        budget.setDate(LocalDate.now());
+        budget.setNom(membre.getNom());
+        if(membre.getType()=="1"){
+            budget.setMontant(20000);
+        }else{
+            budget.setMontant(15000);
+        }
+        budgetService.add(budget);
         return membreService.updateMembre(membre);
     }
 
@@ -42,15 +51,6 @@ public class MembreController {
         member.setFinInscription(LocalDate.now().plusMonths(1));
         member.setConfirmation(true);
         member.increase();
-        Budget budget= new Budget();
-        budget.setDate(LocalDate.now());
-        budget.setNom(member.getNom());
-        if(member.getType()=="1"){
-            budget.setMontant(20000);
-        }else{
-            budget.setMontant(15000);
-        }
-        budgetService.add(budget);
         return membreService.updateMembre(member);
     }
 
